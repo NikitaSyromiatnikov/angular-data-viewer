@@ -1,0 +1,31 @@
+<table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef> Company </th>
+        <td mat-cell *matCellDef="let element"> {{element.company}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element">
+            <a class="user-link" href="/user?{{element._id}}">
+                {{element.name}}
+            </a> 
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="balance">
+        <th mat-header-cell *matHeaderCellDef> Balance </th>
+        <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+        <th class="hide" mat-header-cell *matHeaderCellDef> Phone </th>
+        <td class="hide" mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
